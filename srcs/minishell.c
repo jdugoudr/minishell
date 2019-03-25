@@ -69,9 +69,7 @@ static int	mn_gnl(char **line)
 	char	buff[BUFF + 1];
 	char	*tmp;
 	int		rd;
-	int		nb;
 
-	nb = 1;
 	if ((*line = ft_strnew(BUFF + 1)) == NULL)
 		return (1);
 	while ((tmp = ft_strchr(*line, '\n')) == NULL)

@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 14:53:24 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/07 09:16:55 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:13:02 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	manage_c(t_convert *t, t_flags *flags, va_list *ap)
 
 	init_tabf(tabf);
 	if ((t->value = ft_strnew(1)) == NULL)
-		error(ERR_STR, NULL);
+		printf_error(ERR_STR, NULL);
 	if (flags->fc & L_FLAG)
 		t->value[0] = (char)va_arg(*ap, wint_t);
 	else

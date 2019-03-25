@@ -15,6 +15,8 @@
 
 # include "minishell.h"
 # include "minishell_error.h"
+# include <sys/types.h>
+# include <sys/wait.h>
 
 int	exec_bin(char *cmd, char **arg, char **env);
 

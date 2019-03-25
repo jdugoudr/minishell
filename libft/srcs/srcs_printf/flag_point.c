@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 12:13:43 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/03/15 15:20:41 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:19:15 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			init_point(const char c, const char *str, t_flags *el)
 		while (str[i] >= '0' && str[i] <= '9')
 			i++;
 		if ((el->precision = ft_strndup(str + 1, i - 1)) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 		nb_read += i;
 	}
 	return (nb_read);
@@ -39,13 +39,13 @@ static char	*pt_for_d(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 	if (*nb_digit == 0 && ft_atoi(t->value) == 0)
 	{
 		if ((norm = ft_strdup("")) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		return (norm);
 	}
 	else if (*nb_digit == 0)
 	{
 		if ((norm = ft_strdup(t->value)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		*nb_digit = t->len;
 		return (norm);
 	}
@@ -54,11 +54,11 @@ static char	*pt_for_d(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 	if (*nb_digit > t->len)
 	{
 		if ((norm = ft_strnew(*nb_digit)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		filled_str(norm, '0', *nb_digit - t->len, t->value);
 	}
 	else if ((norm = ft_strdup(t->value)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	return (norm);
 }
 
@@ -69,14 +69,14 @@ static char	*pt_for_s(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 	if (*nb_digit >= t->len)
 	{
 		if ((norm = ft_strdup(t->value)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		*nb_digit = t->len;
 		return (norm);
 	}
 	else
 	{
 		if ((norm = ft_strndup(t->value, *nb_digit)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		t->len = *nb_digit;
 		return (norm);
 	}
@@ -91,7 +91,7 @@ static char	*pt_for_x(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 	if (*nb_digit > t->len)
 	{
 		if ((norm = ft_strnew((*nb_digit))) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		ft_strncpy(norm, t->value, begin);
 		filled_str(norm + begin, '0', *nb_digit - t->len, t->value + begin);
 	}
@@ -100,13 +100,13 @@ static char	*pt_for_x(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 		if (*nb_digit == 0 && ft_strcmp(t->value, "0") == 0)
 		{
 			if ((norm = ft_strdup("")) == NULL)
-				error(ERR_STR, t->value);
+				printf_error(ERR_STR, t->value);
 			t->len = *nb_digit;
 			return (norm);
 		}
 		*nb_digit = t->len;
 		if ((norm = ft_strdup(t->value)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 	}
 	return (norm);
 }

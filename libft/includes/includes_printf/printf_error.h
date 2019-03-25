@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   printf_error.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 15:50:10 by jdugoudr          #+#    #+#             */
-/*   Updated: 2018/12/21 18:17:15 by jdugoudr         ###   ########.fr       */
+/*   Created: 2019/03/24 13:05:50 by jdugoudr          #+#    #+#             */
+/*   Updated: 2019/03/24 13:06:22 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef PRINTF_ERROR_H
+# define PRINTF_ERROR_H
 
 # include "ft_printf.h"
 
@@ -21,6 +21,6 @@
 # define ERR_FLAG			"Error, no valid flag or not possible to use it."
 # define ERR_NOT_AVAIBLE	"Error, flag not avaible with this conversion."
 
-void	error(char *flag, char *to_free);
+void	printf_error(char *flag, char *to_free);
 
 #endif

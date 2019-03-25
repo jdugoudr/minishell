@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:22:32 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/03/15 15:21:16 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:20:04 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static char	*no_point(t_convert *t, char *norm, size_t nb_digit)
 {
 	if ((norm = ft_strndup(t->value, t->len + nb_digit + 1)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	norm = ft_strcat(norm, ".");
 	ft_strfill(norm + t->len + 1, '0', nb_digit);
 	t->len += nb_digit + 1;
@@ -30,13 +30,13 @@ static char	*appro(t_convert *t, char *dec_part, size_t nb)
 
 	t->value[(dec_part - t->value) + nb] = '\0';
 	if ((tmp = ft_strndup("0.", 2 + nb)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	ft_strfill(tmp + 2, '0', nb - 1);
 	tmp[nb + 1] = '1';
 	if ((res = ft_faddstr(t->value, tmp)) == NULL)
 	{
 		free(tmp);
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	}
 	free(tmp);
 	t->len = ft_strlen(res);
@@ -53,7 +53,7 @@ static char	*one_point(t_convert *t, char *dpt, char *norm, size_t nb)
 	if (dpt[i] == '\0')
 	{
 		if ((norm = ft_strndup(t->value, t->len + nb - i)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		ft_strfill(norm + t->len, '0', nb - i);
 		t->len += nb - i;
 	}
@@ -61,7 +61,7 @@ static char	*one_point(t_convert *t, char *dpt, char *norm, size_t nb)
 				|| (dpt[nb] == '5' && !need_appro(dpt + nb + 1)))
 	{
 		if ((norm = ft_strndup(t->value, (dpt - t->value) + nb)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		t->len = (dpt - t->value) + nb;
 	}
 	else
@@ -74,7 +74,7 @@ static char	*prec_zero(t_convert *t, char *dpt, char *norm)
 	char	*tmp;
 
 	if ((norm = ft_strndup(t->value, (dpt - 1 - t->value))) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	if (dpt[0] < '5' || dpt[0] == '\0')
 		t->len = (dpt - t->value - 1);
 	else
@@ -82,7 +82,7 @@ static char	*prec_zero(t_convert *t, char *dpt, char *norm)
 		if ((tmp = ft_addstr(norm, "1")) == NULL)
 		{
 			free(norm);
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		}
 		free(norm);
 		norm = tmp;
@@ -99,7 +99,7 @@ char		*pt_for_f(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 			|| (t->value[0] == '-' && (t->value[1] < '0' || t->value[1] > '9')))
 	{
 		if ((norm = ft_strdup(t->value)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		return (norm);
 	}
 	dec_part = ft_strchr(t->value, '.');
@@ -107,7 +107,7 @@ char		*pt_for_f(t_convert *t, t_flags *el, char *norm, size_t *nb_digit)
 	if (!dec_part && *nb_digit == 0)
 	{
 		if ((norm = ft_strdup(t->value)) == NULL)
-			error(ERR_STR, t->value);
+			printf_error(ERR_STR, t->value);
 		return (norm);
 	}
 	else if (!dec_part)

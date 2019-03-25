@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 15:16:17 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/22 15:28:01 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:11:33 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	read_flag(const char *str, int *nb_print, t_convert *t, va_list *ap)
 	while (str[i] != '\0' && ft_strchr(g_convert, str[i]) == NULL)
 		i += add_flag(str[i], str + i, &flags, ap);
 	if (str[i] == '\0')
-		error(ERR_NO_CONV, NULL);
+		printf_error(ERR_NO_CONV, NULL);
 	t->c = *(str + i);
 	init_convert_function(t, t->c, g_convert);
 	*nb_print += t->f(t, &flags, ap);

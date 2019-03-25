@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:48:37 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/03/15 15:20:07 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:18:29 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	manage_more(t_convert *t, t_flags *el)
 		return ;
 	len = t->len + 1;
 	if ((normalize = ft_strnew(len)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	if (t->value[0] == '-')
 		filled_str(normalize, '-', 1, t->value);
 	else

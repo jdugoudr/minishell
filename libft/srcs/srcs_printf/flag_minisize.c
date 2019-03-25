@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 12:03:42 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/03/15 15:17:44 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:18:13 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			init_minisize(const char *str, t_flags *el)
 		while (str[i] >= '0' && str[i] <= '9')
 			i++;
 		if ((el->arg = ft_strndup(str, i)) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 		nb_read += i;
 	}
 	return (nb_read);
@@ -48,7 +48,7 @@ static int	do_it(t_convert *t, t_flags *el, size_t nb_digit, char c)
 	char	*norm;
 
 	if ((norm = ft_strnew(nb_digit)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	if ((t->c == 'p'
 		|| ((t->c == 'x' || t->c == 'X') && el->fc & DS_FLAG))
 		&& c == '0')

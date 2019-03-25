@@ -48,7 +48,6 @@ int			lex_var(char **tab, char **env, int ret)
 {
 	int		i;
 	int		j;
-	char	*line;
 	int		r;
 
 	i = 0;
@@ -56,7 +55,6 @@ int			lex_var(char **tab, char **env, int ret)
 	r = 0;
 	while (tab[i])
 	{
-		line = NULL;
 		while (tab[i][j] != '\0')
 		{
 			if (tab[i][j] == '$')

@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 21:08:01 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/07 09:05:32 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:17:32 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		add_flag(const char c, const char *str, t_flags *flags, va_list *ap)
 	nb_read += init_j(c, flags);
 	nb_read += init_star(c, str, flags, ap);
 	if (nb_read == 0)
-		error(ERR_FLAG, NULL);
+		printf_error(ERR_FLAG, NULL);
 	return (nb_read);
 }
 

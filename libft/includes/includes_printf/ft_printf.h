@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 16:10:17 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/22 15:17:32 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:10:27 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include "../libft.h"
-# include "error.h"
+# include "printf_error.h"
 # include <unistd.h>
 # include <stdarg.h>
 

@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 15:03:34 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/07 08:48:22 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:14:11 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ static void	x_utility(t_convert *t, t_flags *flags, va_list *ap)
 	if (flags->fc & L_FLAG)
 	{
 		if ((t->value = ft_ultoa_hex(va_arg(*ap, unsigned long))) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 	}
 	else if (flags->fc & Z_FLAG)
 	{
 		if ((t->value = ft_zttoa_hex(va_arg(*ap, size_t))) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 	}
 	else if (flags->fc & LL_FLAG)
 	{
 		if ((t->value = ft_ulltoa_hex(va_arg(*ap, unsigned long long))) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 	}
 	else if (flags->fc & J_FLAG)
 	{
 		if ((t->value = ft_uimaxtoa_hex(va_arg(*ap, uintmax_t))) == NULL)
-			error(ERR_STR, NULL);
+			printf_error(ERR_STR, NULL);
 	}
 	else if ((t->value = ft_uitoa_hex(va_arg(*ap, unsigned int))) == NULL)
-		error(ERR_STR, NULL);
+		printf_error(ERR_STR, NULL);
 	t->len = ft_strlen(t->value);
 }
 

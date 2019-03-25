@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 12:41:48 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/22 15:17:33 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:16:07 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	norm_hex(t_convert *t)
 
 	t->len = t->len + 2;
 	if ((norm = (char *)malloc((t->len + 1) * sizeof(char))) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	if (t->c == 'X')
 		ft_strcpy(norm, "0X");
 	else
@@ -48,7 +48,7 @@ void	norm_oct(t_convert *t)
 
 	t->len = t->len + 1;
 	if ((norm = (char *)malloc((t->len + 1) * sizeof(char))) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	ft_strcpy(norm, "0");
 	ft_strcat(norm, t->value);
 	free(t->value);

@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 11:24:02 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/03/15 15:19:51 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:17:52 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	manage_blank(t_convert *t, t_flags *el)
 		return ;
 	len = ft_strlen(t->value) + 1;
 	if ((normalize = ft_strnew(len)) == NULL)
-		error(ERR_STR, t->value);
+		printf_error(ERR_STR, t->value);
 	filled_str(normalize, ' ', 1, t->value);
 	t->len = len;
 	free(t->value);

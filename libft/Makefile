@@ -6,7 +6,7 @@
 #    By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 13:20:41 by jdugoudr          #+#    #+#              #
-#    Updated: 2019/03/01 16:05:05 by jdugoudr         ###   ########.fr        #
+#    Updated: 2019/03/24 14:04:51 by jdugoudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,22 @@ CC = gcc
 AR = ar rcs
 CFLAGS = -Wall -Werror -Wextra
 NAME = libft.a
-HEADERS = includes 
-HEADERS_PRINTF = includes/includes_printf/
+HEAD_DIR = -I includes -I includes/includes_printf
 LIBS =
-SRC_DIR = srcs/
-SRC_DIR_PRINTF = srcs/srcs_printf/
+VPATH = srcs \
+		srcs/srcs_printf
+VPATH += includes \
+		 includes/includes_printf
 OBJ_DIR = objs/
+HEADERS = libft.h \
+		  ldbtoa.h \
+		  dbtoa.h \
+		  get_next_line.h \
+		  ft_printf.h \
+		  printf_error.h \
+		  init_convert.h \
+		  flags.h \
+		  flag_utility.h
 ################################################################################
 #####								print				 				   #####
 SRCS = ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putnstr.c ft_putstr_fd.c \
@@ -68,38 +78,32 @@ SRCS += ft_ftoa_utility.c ft_faddstr_utility.c  get_next_line.c \
 		ft_tabstr_realloc.c
 ################################################################################
 #####								printf								   #####
-SRCS_PRINTF += ft_printf.c ft_fprintf.c convert_dcs.c convert_c.c convert_dd.c \
-			   convert_prc.c convert_p.c convert_x.c convert_u.c convert_o.c \
-			   convert_f.c convert_utility.c error.c init_convert.c \
-			   init_flags.c flag_blank.c flag_less.c flag_minisize.c \
-			   flag_more.c flag_point.c flag_point_utility.c flag_zero.c \
-			   flag_l.c flag_ll.c flag_lll.c flag_hh.c flag_h.c flag_diese.c \
-			   flag_z.c flag_j.c flag_star.c flag_utility.c
+SRCS += ft_printf.c ft_fprintf.c convert_dcs.c convert_c.c convert_dd.c \
+		convert_prc.c convert_p.c convert_x.c convert_u.c convert_o.c \
+		convert_f.c convert_utility.c printf_error.c init_convert.c \
+		init_flags.c flag_blank.c flag_less.c flag_minisize.c \
+		flag_more.c flag_point.c flag_point_utility.c flag_zero.c \
+		flag_l.c flag_ll.c flag_lll.c flag_hh.c flag_h.c flag_diese.c \
+		flag_z.c flag_j.c flag_star.c flag_utility.c
 ################################################################################
 OBJS:= $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
-OBJS_PRINTF:= $(addprefix $(OBJ_DIR), $(SRCS_PRINTF:.c=.o))
-SRCS:= $(addprefix $(SRC_DIR), $(SRCS))
-SRCS_PRINTF:= $(addprefix $(SRC_DIR_PRINTF), $(SRCS_PRINTF))
 RM= rm -rf
 
 all: $(NAME)
+	@:
 
-$(NAME): $(OBJ_DIR) $(OBJS) $(OBJS_PRINTF)
-	@$(AR) $@ $(OBJS) $(OBJS_PRINTF)
+$(NAME): $(OBJ_DIR) $(OBJS)
+	@$(AR) $@ $(OBJS)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS)
 	@echo $<
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADERS)
-
-$(OBJ_DIR)%.o: $(SRC_DIR_PRINTF)%.c
-	@echo $<
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADERS_PRINTF)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(HEAD_DIR)
 
 $(OBJ_DIR):
-	mkdir $@
+	@mkdir $@
 
 clean:
-	@$(RM) $(OBJS) $(OBJS_PRINTF)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@$(RM) $(NAME)

@@ -6,7 +6,7 @@
 /*   By: jdugoudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:14:18 by jdugoudr          #+#    #+#             */
-/*   Updated: 2019/02/07 08:42:29 by jdugoudr         ###   ########.fr       */
+/*   Updated: 2019/03/24 13:13:41 by jdugoudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	manage_p(t_convert *t, t_flags *flags, va_list *ap)
 
 	init_tabf(tabf);
 	if ((t->value = ft_ltoa_hex(va_arg(*ap, long))) == NULL)
-		error(ERR_STR, NULL);
+		printf_error(ERR_STR, NULL);
 	t->len = ft_strlen(t->value);
 	if ((flags->fc | NO_FLAG) == 0)
 		norm_hex(t);
